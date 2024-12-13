@@ -10,7 +10,7 @@
           id="email" 
           formControlName="email" 
           type="email" 
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          class="w-full border-gray-300 text-gray-700 py-2 rounded-md focus:ring-gray-500 focus:border-gray-500"
           placeholder="Enter your email">
         <div *ngIf="submitted && f['email'].errors" class="text-sm text-red-500 mt-1">
           <small *ngIf="f['email'].errors['required']">Email is required</small>
@@ -25,7 +25,7 @@
           id="password" 
           formControlName="password" 
           type="password" 
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          class="w-full border-gray-300 text-gray-700 py-2 rounded-md focus:ring-gray-500 focus:border-gray-500"
           placeholder="Enter your password">
         <div *ngIf="submitted && f['password'].errors" class="text-sm text-red-500 mt-1">
           <small *ngIf="f['password'].errors['required']">Password is required</small>
