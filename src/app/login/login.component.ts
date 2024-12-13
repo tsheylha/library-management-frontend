@@ -54,7 +54,7 @@ export class LoginComponent {
       return;
     }
 
-    const loginData: LoginModel = {
+  const loginData: LoginModel = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     };
