@@ -1,0 +1,51 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #1787f7;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+/* Add this to your CSS file */
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+button:hover {
+  background-color: #f1f1f1;
+}
+
+button i {
+  font-size: 20px;
+  color: #007bff; /* Blue for edit */
+}
+
+button:hover i {
+  color: #0056b3;
+}
+
+button i.fa-trash {
+  color: red; /* Red for delete */
+}
+
+button:hover i.fa-trash {
+  color: darkred;
+}

@@ -1,0 +1,77 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Form Container */
+form {
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #bfc3c5;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Title */
+form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Input and Label Styling */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 16px;
+  color: #555;
+}
+
+input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+  border-color: #4e90fe;
+  outline: none;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #1787f7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0f6ef1;
+}
+
+/* Form Responsive */
+@media (max-width: 600px) {
+  form {
+    padding: 15px;
+  }
+
+  button[type="submit"] {
+    font-size: 16px;
+  }
+}

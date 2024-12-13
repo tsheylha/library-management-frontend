@@ -4,8 +4,9 @@
       <h2 style="margin: 0; font-size: 22px;">Admin Dashboard</h2>
     </div>
     <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
+
       <li style="padding: 15px 20px;">
-        <a href="#" style="color: white; text-decoration: none;">Dashboard </a>
+        <a href="#" style="color: white; text-decoration: none;">Dashboard</a>
       </li>
       <li style="padding: 15px 20px; position: relative;">
         <a href="#" (click)="toggleBooksDropdown($event)" style="color: white; text-decoration: none;">Books</a>
@@ -45,7 +46,49 @@
     </nav>
 
     <div style="padding: 20px;">
-      <!-- Main Content Goes Here -->
+      <div *ngIf="books.length > 0; else noBooksTemplate">
+        <table>
+          <thead>
+            <tr>
+              <th>Sl No</th>
+              <th>ISBN</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Genre</th>
+              <th>Price</th>
+              <th>Publisher</th>
+              <th>Published Year</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of books;let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ book.isbn }}</td>
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.genre }}</td>
+              <td>{{ book.price }}</td>
+              <td>{{ book.publisher }}</td>
+              <td>{{ book.publishedYear }}</td>
+              <td>
+             <button>
+              <i class="fa fa-edit"></i> 
+             </button>
+            <button>
+              <i class="fas fa-trash"></i>
+            </button>
+      
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <ng-template #noBooksTemplate>
+        <p>No books available.</p>
+      </ng-template>
     </div>
   </div>
 </div>
+

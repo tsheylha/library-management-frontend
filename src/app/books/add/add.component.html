@@ -5,11 +5,10 @@
     </div>
     <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
       <li style="padding: 15px 20px;">
-        <a href="#" style="color: white; text-decoration: none;">Dashboard </a>
+        <a href="#" style="color: white; text-decoration: none;">Dashboard</a>
       </li>
       <li style="padding: 15px 20px; position: relative;">
         <a href="#" (click)="toggleBooksDropdown($event)" style="color: white; text-decoration: none;">Books</a>
-        <!-- Dropdown Menu -->
         <ul [ngStyle]="{'display': booksDropdownVisible ? 'block' : 'none'}" style="list-style: none;position: absolute;top: 50px;left: 20px;margin: 0;padding: 0;background-color: #444;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);z-index: 10;">
           <li style="padding: 10px 20px;">
             <a href="books/add" style="color: white; text-decoration: none;">Add Books</a>
@@ -44,8 +43,47 @@
       </div>
     </nav>
 
+    <!-- Form Section -->
     <div style="padding: 20px;">
-      <!-- Main Content Goes Here -->
+      <form (submit)="saveBook()" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+        <div>
+          <label for="isbn">ISBN:</label>
+          <input type="text" id="isbn" [(ngModel)]="book.isbn" name="isbn" required>
+        </div>
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" [(ngModel)]="book.title" name="title" required>
+        </div>
+        <div>
+          <label for="author">Author:</label>
+          <input type="text" id="author" [(ngModel)]="book.author" name="author" required>
+        </div>
+        <div>
+          <label for="genre">Genre:</label>
+          <input type="text" id="genre" [(ngModel)]="book.genre" name="genre" required>
+        </div>
+        <div>
+          <label for="price">Price:</label>
+          <input type="number" id="price" [(ngModel)]="book.price" name="price" required>
+        </div>
+        <div>
+          <label for="availableCopies">Available Copies:</label>
+          <input type="number" id="availableCopies" [(ngModel)]="book.availableCopies" name="availableCopies" required>
+        </div>
+        <div>
+          <label for="publisher">Publisher:</label>
+          <input type="text" id="publisher" [(ngModel)]="book.publisher" name="publisher" required>
+        </div>
+        <div>
+          <label for="publishedYear">Published Year:</label>
+          <input type="number" id="publishedYear" [(ngModel)]="book.publishedYear" name="publishedYear" required>
+        </div>
+
+        <div style="grid-column: span 2; display: flex; justify-content: flex-start; gap: 10px; margin-top: 20px;">
+          <button type="submit" style="flex: 1; padding: 10px 20px; background-color: #1787f7; color: white; border: none; cursor: pointer; font-size: 16px;">Save</button>
+          <button type="button"(click)="cancelForm()" style="flex: 1; padding: 10px 20px; background-color: #989a9c; color: white; border: none; cursor: pointer; font-size: 16px;">Cancel</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
