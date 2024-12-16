@@ -4,7 +4,13 @@
       <h2 style="margin: 0; font-size: 22px;">Admin Dashboard</h2>
     </div>
     <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
+
+      <li style="padding: 15px 20px;">
+        <a href="#" style="color: white; text-decoration: none;">Dashboard </a>
+      </li>
+
       <!-- Books Menu -->
+
       <li style="padding: 15px 20px; position: relative;">
         <a href="#" (click)="toggleBooksDropdown($event)" style="color: white; text-decoration: none;">Books</a>
         <!-- Dropdown Menu -->
@@ -13,13 +19,20 @@
             <a href="books/add" style="color: white; text-decoration: none;">Add Books</a>
           </li>
           <li style="padding: 10px 20px;">
+
+            <a href="books/view" style="color: white; text-decoration: none;">View Books</a>
+
             <a href="#" style="color: white; text-decoration: none;">View Books</a>
+
           </li>
         </ul>
       </li>
       <!-- Other Menu Items -->
       <li style="padding: 15px 20px;">
         <a href="#" style="color: white; text-decoration: none;">Users</a>
+      </li>
+      <li style="padding: 15px 20px;">
+        <a href="#" style="color: white; text-decoration: none;">Booking</a>
       </li>
     </ul>
   </aside>
