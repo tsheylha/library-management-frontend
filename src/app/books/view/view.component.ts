@@ -1,10 +1,15 @@
+
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../book.service';
 import { CommonModule } from '@angular/common';
 
+import { Component } from '@angular/core';
+
+
 @Component({
   selector: 'app-view',
   standalone: true,
+
   imports: [CommonModule],
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
@@ -46,4 +51,11 @@ export class ViewComponent implements OnInit {
     event.preventDefault(); // Prevent default link behavior
     this.booksDropdownVisible = !this.booksDropdownVisible;
   }
+
+  imports: [],
+  templateUrl: './view.component.html',
+  styleUrl: './view.component.css'
+})
+export class ViewComponent {
+
 }
