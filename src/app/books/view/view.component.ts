@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../book.service';
 import { CommonModule } from '@angular/common';
+import { AddComponent } from "../add/add.component";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AddComponent],
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
 })
@@ -13,8 +15,9 @@ export class ViewComponent implements OnInit {
   books: any[] = [];  
   name: string = 'John Doe';  
   dropdownVisible: boolean = false;
+  isAddComponentVisible = false; 
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService,  private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.loadBooks();
@@ -40,10 +43,21 @@ export class ViewComponent implements OnInit {
   toggleProfileDropdown(): void {
     this.dropdownVisible = !this.dropdownVisible;
   }
-  booksDropdownVisible = false; // Tracks dropdown visibility
 
-  toggleBooksDropdown(event: MouseEvent): void {
-    event.preventDefault(); // Prevent default link behavior
-    this.booksDropdownVisible = !this.booksDropdownVisible;
+  deleteBook(bookId: number): void {
+    this.bookService.delete(bookId).subscribe({
+      next: (response: any) => {
+        console.log('Delete Response:', response);
+        this.toastr.success('Book deleted successfully!', 'Success');
+        this.books = this.books.filter((book) => book.id !== bookId);  
+      },
+      error: (err) => {
+        console.error('Failed to delete book', err);
+        this.toastr.error('Failed to delete the book. Please try again.', 'Error'); 
+      },
+    });
+  }
+  toggleAddComponent() {
+    this.isAddComponentVisible = !this.isAddComponentVisible;
   }
 }

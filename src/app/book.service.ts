@@ -18,4 +18,10 @@ export class BookService {
   get(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl);
   }
+  getCount(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`);
+}
+  delete(bookId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${bookId.toString()}`); 
+  }
 }
