@@ -1,38 +1,25 @@
 
 <div style="display: flex; height: 100vh;">
-  <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
+  <aside style="width: 230px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
     <div style="padding: 20px; background-color: #1787f7; text-align: center;">
-      <h2 style="margin: 0; font-size: 22px;">Admin Dashboard</h2>
+      <h2 style="margin: 0; font-size: 20px;">Library Management System</h2>
     </div>
     <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
-
-      <li style="padding: 15px 20px;">
-        <a href="#" style="color: white; text-decoration: none;">Dashboard</a>
+      <li  class="active" style="padding: 15px 20px;" class="menu-item">
+        <a href="dashboard" class="menu-link">Dashboard</a>
       </li>
-      <li style="padding: 15px 20px; position: relative;">
-        <a href="#" (click)="toggleBooksDropdown($event)" style="color: white; text-decoration: none;">Books</a>
-        <!-- Dropdown Menu -->
-        <ul [ngStyle]="{'display': booksDropdownVisible ? 'block' : 'none'}" style="list-style: none;position: absolute;top: 50px;left: 20px;margin: 0;padding: 0;background-color: #444;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);z-index: 10;">
-          <li style="padding: 10px 20px;">
-            <a href="books/add" style="color: white; text-decoration: none;">Add Books</a>
-          </li>
-          <li style="padding: 10px 20px;">
-            <a href="books/view" style="color: white; text-decoration: none;">View Books</a>
-          </li>
-        </ul>
+      <li style="padding: 15px 20px; position: relative;" class="menu-item">
+        <a href="books/view" class="menu-link"><i class="fa fa-book"> Books </i></a>
       </li>
-      <li style="padding: 15px 20px;">
-        <a href="#" style="color: white; text-decoration: none;">Users</a>
+      <li style="padding: 15px 20px;" class="menu-item">
+        <a href="#" class="menu-link"><i class="fa fa-users"></i>  Users</a>
       </li>
-      <li style="padding: 15px 20px;">
-        <a href="#" style="color: white; text-decoration: none;">Booking</a>
+      <li style="padding: 15px 20px;" class="menu-item">
+        <a href="#" class="menu-link">Booking</a>
       </li>
     </ul>
   </aside>
-
-  <!-- Main Content -->
   <div style="flex-grow: 1; background-color: #ecf0f1; display: flex; flex-direction: column;">
-    <!-- Top Navigation -->
     <nav style="background-color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
       <h1 style="font-size: 24px; margin: 0;">Welcome, {{ name }}</h1>
       <div style="position: relative; display: flex; align-items: center;">
@@ -46,50 +33,55 @@
       </div>
     </nav>
 
-    <div style="padding: 20px;">
-      <div *ngIf="books.length > 0; else noBooksTemplate">
-        <table>
-          <thead>
-            <tr>
-              <th>Sl No</th>
-              <th>ISBN</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Genre</th>
-              <th>Price</th>
-              <th>Publisher</th>
-              <th>Published Year</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let book of books;let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ book.isbn }}</td>
-              <td>{{ book.title }}</td>
-              <td>{{ book.author }}</td>
-              <td>{{ book.genre }}</td>
-              <td>{{ book.price }}</td>
-              <td>{{ book.publisher }}</td>
-              <td>{{ book.publishedYear }}</td>
-              <td>
-             <button>
-              <i class="fa fa-edit"></i> 
-             </button>
-            <button>
-              <i class="fas fa-trash"></i>
-            </button>
-      
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <ng-template #noBooksTemplate>
-        <p>No books available.</p>
-      </ng-template>
+    <div style="margin-bottom: 15px; text-align: right;margin-top: 20px;margin-right: 5px;">
+      <button (click)="toggleAddComponent()" style="background-color: #1787f7; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+        <i class="fa fa-plus" style="margin-right: 5px; color:white"></i> Add
+      </button>
     </div>
+    
+    <div *ngIf="books.length > 0; else noBooksTemplate">
+      <table>
+        <thead>
+          <tr>
+            <th>Sl No</th>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Publisher</th>
+            <th>Published Year</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.publishedYear }}</td>
+            <td>
+              <button>
+                <i class="fa fa-edit"></i>
+              </button>
+              <button (click)="deleteBook(book.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noBooksTemplate>
+      <p>No books available.</p>
+    </ng-template>
+
+  <div *ngIf="isAddComponentVisible" class="add-overlay">
+      <app-add (closeForm)="toggleAddComponent()"></app-add>
   </div>
 </div>
 
