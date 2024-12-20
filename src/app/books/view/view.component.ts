@@ -3,11 +3,13 @@ import { BookService } from '../../book.service';
 import { CommonModule } from '@angular/common';
 import { AddComponent } from "../add/add.component";
 import { ToastrService } from 'ngx-toastr';
+import { NavbarComponent } from '../../navbar/navbar.component';
+import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [CommonModule, AddComponent],
+  imports: [CommonModule, AddComponent,NavbarComponent,EditComponent],
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
 })
@@ -16,6 +18,8 @@ export class ViewComponent implements OnInit {
   name: string = 'John Doe';  
   dropdownVisible: boolean = false;
   isAddComponentVisible = false; 
+  isEditComponentVisible = false;
+  selectedBook: any = null;
 
   constructor(private bookService: BookService,  private toastr: ToastrService) {}
 
@@ -57,7 +61,18 @@ export class ViewComponent implements OnInit {
       },
     });
   }
+  
   toggleAddComponent() {
     this.isAddComponentVisible = !this.isAddComponentVisible;
+  }
+
+  onEditBook(book: any) {
+    this.selectedBook = book;
+    this.isEditComponentVisible = true;
+  }
+
+  closeEditComponent() {
+    this.isEditComponentVisible = false;
+    this.selectedBook = null;
   }
 }

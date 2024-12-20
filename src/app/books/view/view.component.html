@@ -1,6 +1,6 @@
 
 <div style="display: flex; height: 100vh;">
-  <aside style="width: 230px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
+  <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
     <div style="padding: 20px; background-color: #1787f7; text-align: center;">
       <h2 style="margin: 0; font-size: 20px;">Library Management System</h2>
     </div>
@@ -9,31 +9,20 @@
         <a href="dashboard" class="menu-link">Dashboard</a>
       </li>
       <li style="padding: 15px 20px; position: relative;" class="menu-item">
-        <a href="books/view" class="menu-link"><i class="fa fa-book"> Books </i></a>
+        <a href="books/view" class="menu-link">Books</a>
       </li>
       <li style="padding: 15px 20px;" class="menu-item">
-        <a href="#" class="menu-link"><i class="fa fa-users"></i>  Users</a>
+        <a href="#" class="menu-link">Users</a>
       </li>
       <li style="padding: 15px 20px;" class="menu-item">
         <a href="#" class="menu-link">Booking</a>
       </li>
     </ul>
   </aside>
-  <div style="flex-grow: 1; background-color: #ecf0f1; display: flex; flex-direction: column;">
-    <nav style="background-color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-      <h1 style="font-size: 24px; margin: 0;">Welcome, {{ name }}</h1>
-      <div style="position: relative; display: flex; align-items: center;">
-        <img src="assets/img/admin.png" alt="Admin Profile" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 20px; cursor: pointer;" (click)="toggleProfileDropdown()">
-        <div *ngIf="" id="dropdownMenu" style="position: absolute; top: 50px; right: 0; background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000;">
-          <a href="/profile" style="display: block; padding: 10px; text-decoration: none; color: black;">Profile</a>
-          <form action="/logout" method="POST" style="display: block; padding: 10px; margin: 0;">
-            <button type="submit" style="background: none; border: none; color: black; text-decoration: none; cursor: pointer;">Logout</button>
-          </form>
-        </div>
-      </div>
-    </nav>
+  <div style="flex-grow: 2; background-color: #ecf0f1; display: flex; flex-direction: column;">
+    <app-navbar class="z-10"></app-navbar>
 
-    <div style="margin-bottom: 15px; text-align: right;margin-top: 20px;margin-right: 5px;">
+    <div style="margin-bottom: 15px; text-align: right;margin-top: 20px;margin-right: 55px;">
       <button (click)="toggleAddComponent()" style="background-color: #1787f7; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
         <i class="fa fa-plus" style="margin-right: 5px; color:white"></i> Add
       </button>
@@ -49,6 +38,7 @@
             <th>Author</th>
             <th>Genre</th>
             <th>Price</th>
+            <th>Avl_Copies</th>
             <th>Publisher</th>
             <th>Published Year</th>
             <th>Action</th>
@@ -62,12 +52,13 @@
             <td>{{ book.author }}</td>
             <td>{{ book.genre }}</td>
             <td>{{ book.price }}</td>
+            <td>{{ book.availableCopies}}</td>
             <td>{{ book.publisher }}</td>
             <td>{{ book.publishedYear }}</td>
             <td>
-              <button>
+              <button (click)="onEditBook(book)">
                 <i class="fa fa-edit"></i>
-              </button>
+              </button>                        
               <button (click)="deleteBook(book.id)">
                 <i class="fas fa-trash"></i>
               </button>
@@ -83,7 +74,10 @@
   <div *ngIf="isAddComponentVisible" class="add-overlay">
       <app-add (closeForm)="toggleAddComponent()"></app-add>
   </div>
-</div>
 
-<p>view works!</p>
+  <div *ngIf="isEditComponentVisible" class="edit-overlay">
+    <app-edit [book]="selectedBook" (closeEdit)="closeEditComponent()"></app-edit>
+  </div>
+  
+</div>
 
