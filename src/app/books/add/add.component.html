@@ -1,27 +1,108 @@
-<form (submit)="saveBook()">
-  <label for="isbn">ISBN:</label>
-  <input type="text" id="isbn" [(ngModel)]="book.isbn" name="isbn" required>
+<<<<<<< HEAD
 
-  <label for="title">Title:</label>
-  <input type="text" id="title" [(ngModel)]="book.title" name="title" required>
+<div style="display: flex; height: 100vh;">
+  <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
+    <div style="padding: 20px; background-color: #1787f7; text-align: center;">
+      <h2 style="margin: 0; font-size: 22px;">Admin Dashboard</h2>
+    </div>
+    <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
+      <li style="padding: 15px 20px;">
+        <a href="#" style="color: white; text-decoration: none;">Dashboard</a>
+      </li>
+      <li style="padding: 15px 20px; position: relative;">
+        <a href="#" (click)="toggleBooksDropdown($event)" style="color: white; text-decoration: none;">Books</a>
+        <ul [ngStyle]="{'display': booksDropdownVisible ? 'block' : 'none'}" style="list-style: none;position: absolute;top: 50px;left: 20px;margin: 0;padding: 0;background-color: #444;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);z-index: 10;">
+          <li style="padding: 10px 20px;">
+            <a href="books/add" style="color: white; text-decoration: none;">Add Books</a>
+          </li>
+          <li style="padding: 10px 20px;">
+            <a href="books/view" style="color: white; text-decoration: none;">View Books</a>
+          </li>
+        </ul>
+      </li>
+      <li style="padding: 15px 20px;">
+        <a href="#" style="color: white; text-decoration: none;">Users</a>
+      </li>
+      <li style="padding: 15px 20px;">
+        <a href="#" style="color: white; text-decoration: none;">Booking</a>
+      </li>
+    </ul>
+  </aside>
 
-  <label for="author">Author:</label>
-  <input type="text" id="author" [(ngModel)]="book.author" name="author" required>
+  <!-- Main Content -->
+  <div style="flex-grow: 1; background-color: #ecf0f1; display: flex; flex-direction: column;">
+    <!-- Top Navigation -->
+    <nav style="background-color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+      <h1 style="font-size: 24px; margin: 0;">Welcome, {{ name }}</h1>
+      <div style="position: relative; display: flex; align-items: center;">
+        <img src="assets/img/admin.png" alt="Admin Profile" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 20px; cursor: pointer;" (click)="toggleProfileDropdown()">
+        <div *ngIf="" id="dropdownMenu" style="position: absolute; top: 50px; right: 0; background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000;">
+          <a href="/profile" style="display: block; padding: 10px; text-decoration: none; color: black;">Profile</a>
+          <form action="/logout" method="POST" style="display: block; padding: 10px; margin: 0;">
+            <button type="submit" style="background: none; border: none; color: black; text-decoration: none; cursor: pointer;">Logout</button>
+          </form>
+        </div>
+=======
+<div style="padding: 20px;">
+  <form #bookForm="ngForm" (ngSubmit)="saveBook(bookForm)" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+    <div>
+      <label for="isbn">ISBN:</label>
+      <input type="text" id="isbn" [(ngModel)]="book.isbn" name="isbn" required #isbn="ngModel">
+      <div *ngIf="isbn.invalid && isbn.touched" style="color: red; font-size: 12px;">
+        ISBN is required.
+>>>>>>> 7218277 (LMS-07:Integrated the delete api for book entity)
+      </div>
+    </div>
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" [(ngModel)]="book.title" name="title" required #title="ngModel">
+      <div *ngIf="title.invalid && title.touched" style="color: red; font-size: 12px;">
+        Title is required.
+      </div>
+    </div>
+    <div>
+      <label for="author">Author:</label>
+      <input type="text" id="author" [(ngModel)]="book.author" name="author" required #author="ngModel">
+      <div *ngIf="author.invalid && author.touched" style="color: red; font-size: 12px;">
+        Author is required.
+      </div>
+    </div>
+    <div>
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" [(ngModel)]="book.genre" name="genre" required #genre="ngModel">
+      <div *ngIf="genre.invalid && genre.touched" style="color: red; font-size: 12px;">
+        Genre is required.
+      </div>
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" id="price" [(ngModel)]="book.price" name="price" required #price="ngModel">
+      <div *ngIf="price.invalid && price.touched" style="color: red; font-size: 12px;">
+        Price is required.
+      </div>
+    </div>
+    <div>
+      <label for="publisher">Publisher:</label>
+      <input type="text" id="publisher" [(ngModel)]="book.publisher" name="publisher" required #publisher="ngModel">
+      <div *ngIf="publisher.invalid && publisher.touched" style="color: red; font-size: 12px;">
+        Publisher is required.
+      </div>
+    </div>
+    <div>
+      <label for="publishedYear">Published Year:</label>
+      <input type="number" id="publishedYear" [(ngModel)]="book.publishedYear" name="publishedYear" required #publishedYear="ngModel">
+      <div *ngIf="publishedYear.invalid && publishedYear.touched" style="color: red; font-size: 12px;">
+        Published Year is required.
+      </div>
+    </div>
 
-  <label for="genre">Genre:</label>
-  <input type="text" id="genre" [(ngModel)]="book.genre" name="genre" required>
-
-  <label for="price">Price:</label>
-  <input type="number" id="price" [(ngModel)]="book.price" name="price" required>
-
-  <label for="availableCopies">Available Copies:</label>
-  <input type="number" id="availableCopies" [(ngModel)]="book.availableCopies" name="availableCopies" required>
-
-  <label for="publisher">Publisher:</label>
-  <input type="text" id="publisher" [(ngModel)]="book.publisher" name="publisher" required>
-
-  <label for="publishedYear">Published Year:</label>
-  <input type="number" id="publishedYear" [(ngModel)]="book.publishedYear" name="publishedYear" required>
-
-  <button type="submit">Save</button>
-</form>
+    <div style="grid-column: span 2; display: flex; justify-content: flex-start; gap: 10px; margin-top: 20px;">
+      <button type="submit" style="flex: 1; padding: 10px 20px; background-color: #1787f7; color: white; border: none; cursor: pointer; font-size: 16px;">
+        Save
+      </button>
+      <button type="button" (click)="cancelForm()" style="flex: 1; padding: 10px 20px; background-color: #989a9c; color: white; border: none; cursor: pointer; font-size: 16px;">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

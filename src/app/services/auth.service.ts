@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { LoginModel, LoginResponseModel } from '../models/login.model';
 import { ApiService } from '../api.service';
+import { UserService } from './user.service';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class AuthService {
   private REFRESH_TOKEN_KEY = 'refresh_token';
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private userService: UserService
   ) {}
 
   // Store tokens
@@ -74,14 +77,28 @@ export class AuthService {
     );
   }
 
-  // Logout method
-  logout(): Observable<any> {
-    return this.apiService.post('/auth/logout', {}).pipe(
-      map(() => {
-        this.removeToken();
-        this.removeRefreshToken();
-      })
+  getCurrentUser(): Observable<User> {
+    return this.apiService.get<User>('/users/self').pipe(
+      map((response: any) => {
+        // Create a new User object from the API response
+        const user: User = {
+          id: response?.data?.user.id,
+          // Map other properties from the response
+          email: response?.data?.user.email,
+          name:"Admin"
+          // Add any additional mapping as needed
+        };
+        
+        this.userService.setCurrentUser(user);
+        return user;     
+       })
     );
+  }
+
+  // Logout method
+  logout(): void {
+    this.removeToken();
+    this.removeRefreshToken();
   }
 
   // Refresh token method
