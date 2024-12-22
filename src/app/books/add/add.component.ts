@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BookService } from '../../book.service';
 
-
 @Component({
   selector: 'app-add',
   standalone: true,
@@ -37,7 +36,6 @@ export class AddComponent {
 booksDropdownVisible = false; 
   constructor(private bookService: BookService, private router: Router, private toastr: ToastrService) {}
   saveBook(form: NgForm) {
-    // If the form is invalid, mark all fields as touched to trigger validation messages
     if (form.invalid) {
       Object.keys(form.controls).forEach((field) => {
         const control = form.controls[field];

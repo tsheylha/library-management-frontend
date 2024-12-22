@@ -24,4 +24,8 @@ export class BookService {
   delete(bookId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${bookId.toString()}`); 
   }
+
+  updateBook(id: number, bookDTO: any): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/update/${id}`, bookDTO);
+  }
 }
