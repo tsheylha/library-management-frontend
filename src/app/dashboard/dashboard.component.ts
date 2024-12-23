@@ -1,30 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,NavbarComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
   name: string = 'John Doe';  
   dropdownVisible: boolean = false;
+  totalBooks: number = 0;
 
-  constructor() { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-    
-  }
-
-  toggleProfileDropdown(): void {
-    this.dropdownVisible = !this.dropdownVisible;
-  }
-  booksDropdownVisible = false; // Tracks dropdown visibility
-
-  toggleBooksDropdown(event: MouseEvent): void {
-    event.preventDefault(); // Prevent default link behavior
-    this.booksDropdownVisible = !this.booksDropdownVisible;
+    this.bookService.getCount().subscribe({
+      next: (count: number) => {
+        this.totalBooks = count;  // Get the total count of books from the service
+      },
+      error: (err) => {
+        console.error('Error fetching book count:', err);  // Log error if any
+      }
+    });
   }
 }
