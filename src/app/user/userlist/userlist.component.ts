@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from '../../navbar/navbar.component';
 import { UpdateComponent } from '../update/update.component';
+import { NavbarComponent } from '../../navbar/navbar.component';
 
 @Component({
   selector: 'app-userlist',

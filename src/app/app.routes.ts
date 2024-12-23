@@ -16,4 +16,5 @@ export const routes: Routes = [
   { path: 'books/view', component: ViewComponent },
   { path: 'user/userlist', component: UserlistComponent },
   { path: 'user/update', component: UpdateComponent},
+
 ];

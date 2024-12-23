@@ -1,28 +1,13 @@
 <div style="display: flex; height: 100vh;">
   <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
     <div style="padding: 20px; background-color: #1787f7; text-align: center;">
-      <h2 style="margin: 0; font-size: 22px;">Admin Dashboard</h2>
+      <h2 style="margin: 0; font-size: 20px;">Library Management System</h2>
     </div>
     <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
-      <!-- Books Menu -->
-      <li style="padding: 15px 20px; position: relative;">
-        <a href="#" (click)="toggleBooksDropdown($event)" style="color: white; text-decoration: none;">Books</a>
-        <!-- Dropdown Menu -->
-        <ul [ngStyle]="{'display': booksDropdownVisible ? 'block' : 'none'}" style="list-style: none;position: absolute;top: 50px;left: 20px;margin: 0;padding: 0;background-color: #444;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);z-index: 10;">
-          <li style="padding: 10px 20px;">
-            <a href="books/add" style="color: white; text-decoration: none;">Add Books</a>
-          </li>
-          <li style="padding: 10px 20px;">
-            <a href="#" style="color: white; text-decoration: none;">View Books</a>
-          </li>
-        </ul>
+      <li class="active" style="padding: 15px 20px;" class="menu-item">
+        <a href="dashboard" class="menu-link">Dashboard</a>
       </li>
-<<<<<<< HEAD
-      <!-- Other Menu Items -->
-      <li style="padding: 15px 20px;">
-        <a href="#" style="color: white; text-decoration: none;">Users</a>
-=======
-      <li style="padding: 15px 20px; position: relative;" class="menu-item">
+    <li style="padding: 15px 20px; position: relative;" class="menu-item">
         <a href="books/view" class="menu-link">Books</a>
       </li>
       <li style="padding: 15px 20px;" class="menu-item">
@@ -30,29 +15,27 @@
       </li>
       <li style="padding: 15px 20px;" class="menu-item">
         <a href="#" class="menu-link">Booking</a>
->>>>>>> f131c8a (LMS-09:Integrated fetch api for user entity)
       </li>
     </ul>
   </aside>
 
-  <!-- Main Content -->
-  <div style="flex-grow: 1; background-color: #ecf0f1; display: flex; flex-direction: column;">
-    <!-- Top Navigation -->
-    <nav style="background-color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-      <h1 style="font-size: 24px; margin: 0;">Welcome, {{ name }}</h1>
-      <div style="position: relative; display: flex; align-items: center;">
-        <img src="assets/img/admin.png" alt="Admin Profile" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 20px; cursor: pointer;" (click)="toggleProfileDropdown()">
-        <div *ngIf="" id="dropdownMenu" style="position: absolute; top: 50px; right: 0; background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000;">
-          <a href="/profile" style="display: block; padding: 10px; text-decoration: none; color: black;">Profile</a>
-          <form action="/logout" method="POST" style="display: block; padding: 10px; margin: 0;">
-            <button type="submit" style="background: none; border: none; color: black; text-decoration: none; cursor: pointer;">Logout</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-
+  <div style="flex-grow: 2; background-color: #ecf0f1; display: flex; flex-direction: column;">
+    <app-navbar class="z-10"></app-navbar>
     <div style="padding: 20px;">
-      <!-- Main Content Goes Here -->
-    </div>
-  </div>
+      <div class="dashboard">
+        <div class="stats">
+          <div class="stat-box">Total books<br><strong>{{ totalBooks }}</strong></div>
+          <div class="stat-box">Borrowed books<br><strong>0</strong></div>
+          <div class="stat-box">Overdue<br><strong>0</strong></div>
+          <div class="stat-box">Members<br><strong>0</strong></div>
+        </div>
+      </div>      
 </div>
+      <!-- <div class="kpi-section">
+        <div class="kpi">Borrowed: <strong>0</strong></div>
+        <div class="kpi">Returned: <strong>0</strong></div>
+      </div> -->
+</div>
+    
+</div>
+

@@ -6,35 +6,33 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  .update-user-form h2 {
+ 
+.update-user-form h2 {
     text-align: center;
   }
   
-  .update-user-form label {
+.update-user-form label {
     display: block;
     margin-top: 10px;
   }
   
-  .update-user-form input {
+.update-user-form input {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
     margin-bottom: 10px;
   }
   
-  .update-user-form button {
+.update-user-form button {
     padding: 10px;
     margin-right: 10px;
   }
   
-  .update-user-form button[type="submit"] {
+.update-user-form button[type="submit"] {
     background-color: #1787f7;
     color: white;
-  }
-  
-  .update-user-form button[type="button"] {
+  } 
+.update-user-form button[type="button"] {
     background-color: #ccc;
     color: black;
   }
-  
