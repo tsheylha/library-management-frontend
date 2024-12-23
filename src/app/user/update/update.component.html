@@ -1,0 +1,21 @@
+<div class="update-user-form">
+    <h2>Update User</h2>
+    
+    <form (ngSubmit)="post()">
+      <label for="name">Name</label>
+      <input id="name" [(ngModel)]="user.name" name="name" required />
+  
+      <label for="email">Email</label>
+      <input id="email" [(ngModel)]="user.email" name="email" required />
+  
+      <label for="phoneNumber">Phone Number</label>
+      <input id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber" required />
+  
+      <label for="course">Course</label>
+      <input id="course" [(ngModel)]="user.course" name="course" required />
+  
+      <button type="submit">Save Changes</button>
+      <button type="button" (click)="cancelUpdate()">Cancel</button>
+    </form>
+  </div>
+  

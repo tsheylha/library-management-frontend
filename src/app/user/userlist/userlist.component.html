@@ -1,0 +1,58 @@
+<div style="display: flex; height: 100vh;">
+  <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
+    <div style="padding: 20px; background-color: #1787f7; text-align: center;">
+      <h2 style="margin: 0; font-size: 20px;">Library Management System</h2>
+    </div>
+    <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
+      <li  class="active" style="padding: 15px 20px;" class="menu-item">
+        <a href="dashboard" class="menu-link">Dashboard</a>
+      </li>
+      <li style="padding: 15px 20px; position: relative;" class="menu-item">
+        <a href="books/view" class="menu-link">Books</a>
+      </li>
+      <li style="padding: 15px 20px;" class="menu-item">
+        <a href="user/userlist" class="menu-link">Users</a>
+      </li>
+      <li style="padding: 15px 20px;" class="menu-item">
+        <a href="#" class="menu-link">Booking</a>
+      </li>
+    </ul>
+  </aside>
+  <div style="flex-grow: 2; background-color: #ecf0f1; display: flex; flex-direction: column;">
+    <app-navbar class="z-10"></app-navbar>
+    
+    <div style="margin-top: 90px;" *ngIf="users.length > 0; else noUsersTemplate" >
+      <table>
+        <thead>
+          <tr>
+            <th>Sl No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone_Number</th>
+            <th>Course</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ i + 1 }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ user.name }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ user.email }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ user?.phoneNumber }}</td> 
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ user.course }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">
+              <button (click)="onEditUser(user)">
+                  <i class="fa fa-edit"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noUsersTemplate>
+      <p style="text-align: center; color: #555;">No Users Available.</p>
+    </ng-template>
+    <div *ngIf="isUpdateComponentVisible" class="update-user-form ">
+      <app-update *ngIf="selectedUser" [user]="selectedUser" (closeEdit)="closeUpdateComponent()"></app-update>
+    </div>
+</div>
