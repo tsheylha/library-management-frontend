@@ -1,0 +1,77 @@
+table {
+    width: 97%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #1787f7;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  button i {
+    font-size: 20px;
+    color: #007bff; 
+  }
+  
+  button:hover i {
+    color: #0056b3;
+  }
+  
+  button i.fa-trash {
+    color: red;
+  }
+  
+  button:hover i.fa-trash {
+    color: darkred;
+  }
+  .menu-item {
+    position: relative;
+  }
+  .menu-link {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .menu-item:hover .menu-link {
+    background-color: #044e8b;  
+    color: white;
+  }
+  .update-user-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
