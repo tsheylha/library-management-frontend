@@ -6,6 +6,8 @@ import { AddComponent } from './books/add/add.component';
 import { ViewComponent } from './books/view/view.component';
 import { UserlistComponent } from './user/userlist/userlist.component';
 import { UpdateComponent } from './user/update/update.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, // Default route
@@ -16,4 +18,6 @@ export const routes: Routes = [
   { path: 'books/view', component: ViewComponent },
   { path: 'user/userlist', component: UserlistComponent },
   { path: 'user/update', component: UpdateComponent},
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password/:token', component: ResetPasswordComponent }
 ];
