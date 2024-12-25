@@ -1,41 +1,53 @@
-<div style="display: flex; height: 100vh;">
-  <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
-    <div style="padding: 20px; background-color: #1787f7; text-align: center;">
-      <h2 style="margin: 0; font-size: 20px;">Library Management System</h2>
-    </div>
-    <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
-      <li class="active" style="padding: 15px 20px;" class="menu-item">
-        <a href="dashboard" class="menu-link">Dashboard</a>
-      </li>
-      <li style="padding: 15px 20px; position: relative;" class="menu-item">
-        <a href="books/view" class="menu-link">Books</a>
-      </li>
-      <li style="padding: 15px 20px;" class="menu-item">
-        <a href="user/userlist" class="menu-link">Users</a>
-      </li>
-      <li style="padding: 15px 20px;" class="menu-item">
-        <a href="#" class="menu-link">Booking</a>
-      </li>
-    </ul>
-  </aside>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <app-navbar class="z-18 fixed top-0 left-20 w-[calc(100%-5rem)] bg-white h-30 shadow-md flex items-center px-6"></app-navbar>
 
-  <div style="flex-grow: 2; background-color: #ecf0f1; display: flex; flex-direction: column;">
-    <app-navbar class="z-10"></app-navbar>
-    <div style="padding: 20px;">
-      <div class="dashboard">
-        <div class="stats">
-          <div class="stat-box">Total books<br><strong>{{ totalBooks }}</strong></div>
-          <div class="stat-box">Borrowed books<br><strong>0</strong></div>
-          <div class="stat-box">Overdue<br><strong>0</strong></div>
-          <div class="stat-box">Members<br><strong>0</strong></div>
-        </div>
-      </div>      
-</div>
-      <!-- <div class="kpi-section">
-        <div class="kpi">Borrowed: <strong>0</strong></div>
-        <div class="kpi">Returned: <strong>0</strong></div>
-      </div> -->
-</div>
-    
-</div>
+  <aside class="w-44 bg-white h-screen fixed top-0 left-0 pt-5 flex flex-col items-center space-y-8">
+    <img src="assets/img/logo.jpg" alt="Logo" class="w-23 h-28 mb-5">
 
+    <div class="flex flex-col space-y-6">
+      <a routerLink="dashboard/main" routerLinkActive="bg-blue-500 text-white" class="flex items-center space-x-2 p-2 rounded-md hover:bg-orange-300 group">
+        <span class="material-icons text-gray-400 text-3xl group-hover:text-blue-500">dashboard</span>
+        <span class="text-gray-600 text-xl font-semibold group-hover:text-blue-500">Dashboard</span>
+      </a>
+      
+      <a routerLink="books/view" routerLinkActive="bg-blue-500 text-white" class="flex items-center space-x-2 p-2 rounded-md hover:bg-orange-300 group">
+        <span class="material-icons text-gray-400 text-3xl group-hover:text-blue-500">library_books</span>
+        <span class="text-gray-600 text-xl font-semibold group-hover:text-blue-500">Books</span>
+      </a>
+
+      <a routerLink="user/userlist" routerLinkActive="bg-blue-500 text-white" class="flex items-center space-x-2 p-2 rounded-md hover:bg-orange-300 group">
+        <span class="material-icons text-gray-400 text-3xl group-hover:text-blue-500">group</span>
+        <span class="text-gray-600 text-xl font-semibold group-hover:text-blue-500">Students</span>
+      </a>
+
+      <a routerLink="#" routerLinkActive="bg-blue-500 text-white" class="flex items-center space-x-2 p-2 rounded-md hover:bg-orange-300 group">
+        <span class="material-icons text-gray-400 text-3xl group-hover:text-blue-500">book</span>
+        <span class="text-gray-600 text-xl font-semibold group-hover:text-blue-500">Booking</span>
+      </a>
+
+      <a routerLink="#" routerLinkActive="bg-blue-500 text-white" class="flex items-center space-x-2 p-2 rounded-md hover:bg-orange-300 group">
+        <span class="material-icons text-gray-400 text-3xl group-hover:text-blue-500">settings</span>
+        <span class="text-gray-600 text-xl font-semibold group-hover:text-blue-500">Settings</span>
+      </a>
+
+      <a routerLink="#" routerLinkActive="bg-blue-500 text-white" class="flex items-center space-x-2 p-2 rounded-md hover:bg-orange-300 group">
+         <span class="material-icons text-gray-400 text-3xl group-hover:text-blue-500">help_outline</span>
+         <span class="text-gray-600 text-xl font-semibold group-hover:text-blue-500">Help</span>
+      </a>
+</div>    
+</aside>
+
+  <main class="ml-40 mt-28 p-8">
+    <router-outlet></router-outlet>
+  </main>
+  
+</body>
+</html>

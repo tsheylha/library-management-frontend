@@ -14,14 +14,13 @@
     </div>
   </button>
   
-  
-      <div 
+   <div 
         *ngIf="isDropdownOpen"
         class="absolute right-0 top-full mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
       >
         <div class="p-4 border-b border-gray-200 flex items-center space-x-4">
           <img 
-            [src]="user?.avatar || 'assets/icon-profile.png'" 
+            [src]="user?.avatar || 'assets/img/icon-profile.png'" 
             alt="Profile" 
             class="w-12 h-12 rounded-full object-cover"
           />
