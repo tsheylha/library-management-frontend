@@ -6,17 +6,20 @@ import { ViewComponent } from './books/view/view.component';
 import { UserlistComponent } from './user/userlist/userlist.component';
 
 import { MainComponent } from './dashboard/main/main.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent }, // Default route
+  { path: '', component: LoginComponent }, 
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password/:token', component: ResetPasswordComponent },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
+    path: 'dashboard',component: DashboardComponent,
     children: [
-      { path: '', component: MainComponent }, // Default child route for dashboard
-      { path: 'dashboard/main', component: MainComponent }, // Optional, if you want explicit navigation to 'dashboard/main'
+      { path: '', component: MainComponent }, 
+      { path: 'dashboard/main', component: MainComponent },
       { path: 'books/view', component: ViewComponent },
       { path: 'user/userlist', component: UserlistComponent },
     ],
