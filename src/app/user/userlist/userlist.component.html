@@ -1,48 +1,38 @@
-<div style="display: flex; height: 100vh;">
-  <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
-    <div style="padding: 20px; background-color: #1787f7; text-align: center;">
-      <h2 style="margin: 0; font-size: 20px;">Library Management System</h2>
+<div class="grid grid-cols-1 gap-6">
+  <!-- Users List -->
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="font-semibold text-2xl text-gray-800">Books List</h2>
     </div>
-    <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
-      <li  class="active" style="padding: 15px 20px;" class="menu-item">
-        <a href="dashboard" class="menu-link">Dashboard</a>
-      </li>
-      <li style="padding: 15px 20px; position: relative;" class="menu-item">
-        <a href="books/view" class="menu-link">Books</a>
-      </li>
-      <li style="padding: 15px 20px;" class="menu-item">
-        <a href="user/userlist" class="menu-link">Users</a>
-      </li>
-      <li style="padding: 15px 20px;" class="menu-item">
-        <a href="#" class="menu-link">Booking</a>
-      </li>
-    </ul>
-  </aside>
-  <div style="flex-grow: 2; background-color: #ecf0f1; display: flex; flex-direction: column;">
-    <app-navbar class="z-10"></app-navbar>
-    
-    <div style="margin-top: 90px;" *ngIf="users.length > 0; else noUsersTemplate" >
-      <table>
-        <thead>
+    <!-- Table Section -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-gray-600 border-collapse">
+        <thead class="bg-gray-100 text-gray-700">
           <tr>
-            <th>Sl No</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone_Number</th>
-            <th>Course</th>
-            <th>Actions</th>
+            <th class="py-3 px-4 border-b-2">Sl No</th>
+            <th class="py-3 px-4 border-b-2">Name</th>
+            <th class="py-3 px-4 border-b-2">Email</th>
+            <th class="py-3 px-4 border-b-2">Phone_Number</th>
+            <th class="py-3 px-4 border-b-2">Course</th>
+            <th class="py-3 px-4 border-b-2">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users; let i = index">
-            <td style="padding: 10px; border: 1px solid #ddd;">{{ i + 1 }}</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">{{ user.name }}</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">{{ user.email }}</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">{{ user?.phoneNumber }}</td> 
-            <td style="padding: 10px; border: 1px solid #ddd;">{{ user.course }}</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-              <button (click)="onEditUser(user)">
-                  <i class="fa fa-edit"></i>
+          <tr 
+          *ngFor="let user of users;let i = index" 
+            class="border-t hover:bg-gray-50 transition duration-150">
+            <td class="py-3 px-4">{{ i + 1 }}</td>
+            <td class="py-3 px-4">{{ user.name }}</td>
+            <td class="py-3 px-4">{{ user.email }}</td>
+            <td class="py-3 px-4">{{ user?.phoneNumber }}</td>
+            <td class="py-3 px-4">{{ user.course }}</td>
+            <td class="py-3 px-4 flex gap-3">
+              <button 
+              (click)="onEditUser(user)"
+                class="bg-orange-300 text-white px-3 py-1 rounded hover:bg-orange-600 transition duration-150">
+                <i class="fa fa-edit"></i>
+
               </button>
             </td>
           </tr>

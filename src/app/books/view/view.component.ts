@@ -9,7 +9,7 @@ import { EditComponent } from '../edit/edit.component';
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [CommonModule, AddComponent,NavbarComponent,EditComponent],
+  imports: [CommonModule, AddComponent,EditComponent],
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
 })

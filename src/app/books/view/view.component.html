@@ -1,35 +1,19 @@
-<div style="display: flex; height: 100vh;">
-  <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
-    <div style="padding: 20px; background-color: #1787f7; text-align: center;">
-      <h2 style="margin: 0; font-size: 20px;">Library Management System</h2>
-    </div>
-    <ul style="list-style-type: none; padding: 0; margin: 0; flex-grow: 1;">
-      <li  class="active" style="padding: 15px 20px;" class="menu-item">
-        <a href="dashboard" class="menu-link">Dashboard</a>
-      </li>
-      <li style="padding: 15px 20px; position: relative;" class="menu-item">
-        <a href="books/view" class="menu-link">Books</a>
-      </li>
-      <li style="padding: 15px 20px;" class="menu-item">
-        <a href="user/userlist" class="menu-link">Users</a>
-      </li>
-      <li style="padding: 15px 20px;" class="menu-item">
-        <a href="#" class="menu-link">Booking</a>
-      </li>
-    </ul>
-  </aside>
-  <div style="flex-grow: 2; background-color: #ecf0f1; display: flex; flex-direction: column;">
-    <app-navbar class="z-10"></app-navbar>
-
-    <div style="margin-bottom: 15px; text-align: right;margin-top: 20px;margin-right: 55px;">
-      <button (click)="toggleAddComponent()" style="background-color: #1787f7; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
-        <i class="fa fa-plus" style="margin-right: 5px; color:white"></i> Add
+<div class="grid grid-cols-1 gap-6">
+  <!-- Users List -->
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="font-semibold text-2xl text-gray-800">Books List</h2>
+      <button 
+        (click)="toggleAddComponent()" 
+        class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-200 shadow">
+        + Add New Book
       </button>
     </div>
-    
-    <div *ngIf="books.length > 0; else noBooksTemplate">
-      <table>
-        <thead>
+    <!-- Table Section -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-gray-600 border-collapse">
+        <thead class="bg-gray-100 text-gray-700">
           <tr>
             <th>Sl No</th>
             <th>ISBN</th>
@@ -66,9 +50,6 @@
         </tbody>
       </table>
     </div>
-    <ng-template #noBooksTemplate>
-      <p>No books available.</p>
-    </ng-template>
 
   <div *ngIf="isAddComponentVisible" class="add-overlay">
       <app-add (closeForm)="toggleAddComponent()"></app-add>
@@ -77,5 +58,4 @@
   <div *ngIf="isEditComponentVisible" class="edit-overlay">
     <app-edit [book]="selectedBook" (closeEdit)="closeEditComponent()"></app-edit>
   </div>
-  
 </div>

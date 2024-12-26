@@ -1,0 +1,32 @@
+<h1 class="text-3xl font-semibold mb-2 mt-10">Hello, <span class="text-blue-500">Admin!</span></h1>
+ <div class="grid grid-cols-4 gap-6 mb-8">
+      <div class="bg-white shadow-md rounded-lg p-6 text-center">
+        <div class="stat-box"><strong class="text-2xl">{{ totalBooks }}</strong><br>Total books</div>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-6 text-center">
+        <p class="text-2xl font-bold">740</p>
+        <p class="text-gray-500">Borrowed Books</p>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-6 text-center">
+        <p class="text-2xl font-bold">22</p>
+        <p class="text-gray-500">Overdue Books</p>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-6 text-center">
+        <p class="text-2xl font-bold">60</p>
+        <p class="text-gray-500">Total Users</p>
+      </div>
+    </div>
+
+    <!-- User & Books List -->
+    <div class="grid grid-cols-2 gap-6">
+      <div class="mt-10 ml-5">
+        <h2>Line Chart</h2>
+        <ngx-charts-line-chart [results]="single" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"> 
+        </ngx-charts-line-chart>
+      </div>
+      <div class="mt-10">
+        <h2>Pie Chart</h2>
+        <ngx-charts-pie-chart [results]="pieChartData" [labels]="showLabels">
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
