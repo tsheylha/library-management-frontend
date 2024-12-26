@@ -1,0 +1,60 @@
+<div class="add-container" style="padding: 20px;">
+    <!-- Title Centered at the Top -->
+    <h2 style="text-align: center; font-size: 24px; margin-bottom: 20px;">Booking Form</h2>
+    
+    <form #bookingForm="ngForm" (ngSubmit)="saveBooking(bookingForm)" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+      
+      <div>
+        <label for="bookId">Book ID:</label>
+        <input type="number" id="bookId" [(ngModel)]="booking.bookId" name="bookId" required #bookId="ngModel">
+        <div *ngIf="bookId.invalid && bookId.touched" style="color: red; font-size: 12px;">
+          Book ID is required.
+        </div>
+      </div>
+  
+      <div>
+        <label for="userId">User ID:</label>
+        <input type="number" id="userId" [(ngModel)]="booking.userId" name="userId" required #userId="ngModel">
+        <div *ngIf="userId.invalid && userId.touched" style="color: red; font-size: 12px;">
+          User ID is required.
+        </div>
+      </div>
+  
+      <div>
+        <label for="borrowedDate">Borrowed Date:</label>
+        <input type="date" id="borrowedDate" [(ngModel)]="booking.borrowedDate" name="borrowedDate" required #borrowedDate="ngModel">
+        <div *ngIf="borrowedDate.invalid && borrowedDate.touched" style="color: red; font-size: 12px;">
+          Borrowed Date is required.
+        </div>
+      </div>
+  
+      <div>
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id="dueDate" [(ngModel)]="booking.dueDate" name="dueDate" required #dueDate="ngModel">
+        <div *ngIf="dueDate.invalid && dueDate.touched" style="color: red; font-size: 12px;">
+          Due Date is required.
+        </div>
+      </div>
+  
+      <div>
+        <label for="overDue">Overdue (Days):</label>
+        <input type="number" id="overDue" [(ngModel)]="booking.overDue" name="overDue" [readonly]="true" />
+      </div>
+  
+      <div>
+        <label for="fineAmount">Fine Amount:</label>
+        <input type="number" id="fineAmount" [(ngModel)]="booking.fineAmount" name="fineAmount" [readonly]="true" />
+      </div>
+  
+      <div style="grid-column: span 2; display: flex; justify-content: flex-start; gap: 10px; margin-top: 20px;">
+        <button type="submit" style="flex: 1; padding: 10px 20px; background-color: #1787f7; color: white; border: none; cursor: pointer; font-size: 16px;">
+          Save
+        </button>
+        <button type="button" (click)="cancelForm()" style="flex: 1; padding: 10px 20px; background-color: #989a9c; color: white; border: none; cursor: pointer; font-size: 16px;">
+          Cancel
+        </button>
+      </div>
+  
+    </form>
+  </div>
+  

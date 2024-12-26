@@ -1,0 +1,105 @@
+.add-container {
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555555; /* Neutral gray text */
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+  }
+  
+  input:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  button[type="button"] {
+    background-color: #6c757d; /* Bootstrap secondary color */
+    color: white;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  div[style*="color: red;"] {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  div[style*="grid-column"] {
+    grid-column: span 2; /* Full row for buttons */
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 15px;
+  }
+  
+  @media (max-width: 600px) {
+    form {
+      grid-template-columns: 1fr; /* Single column on small screens */
+    }
+  
+    div[style*="grid-column"] {
+      justify-content: space-between;
+    }
+  }
+  

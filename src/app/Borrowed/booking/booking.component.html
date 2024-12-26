@@ -1,0 +1,56 @@
+<div style="display: flex; height: 100vh;">
+    <aside style="width: 250px; background-color: #1787f7; color: white; display: flex; flex-direction: column;">
+    </aside>
+    <div style="flex-grow: 2; background-color: #ecf0f1; display: flex; flex-direction: column;">
+      <div style="margin-bottom: 15px; text-align: right;margin-top: 20px;margin-right: 55px;">
+        <button (click)="toggleAddComponent()" style="background-color: #1787f7; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+          <i class="fa fa-plus" style="margin-right: 5px; color:white"></i> Add
+        </button>
+      </div>
+      
+      <div *ngIf="books.length > 0; else noBooksTemplate">
+        <table>
+          <thead>
+            <tr>
+              <th>Book ID</th>
+              <th>User ID</th>
+              <th>Borrowed Date</th>
+              <th>Due Date</th>
+              <th>Overdue (Days)</th>
+              <th>Fine Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of books; let i = index">
+              <td>{{ Booking.bookId }}</td>
+              <td>{{ Booking.userId }}</td>
+              <td>{{ Booking.borrowedDate | date: 'dd-MM-yyyy' }}</td>
+              <td>{{ Booking.dueDate | date: 'dd-MM-yyyy' }}</td>
+              <td>{{ Booking.overDue }}</td>
+              <td>{{ Booking.fineAmount }}</td>
+              <td>
+                <button (click)="onEditBook(book)">
+                  <i class="fa fa-edit"></i>
+                </button>                        
+                <button (click)="deleteBook(book.id)">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noBooksTemplate>
+        <p>No records.</p>
+      </ng-template>
+  
+    <div *ngIf="isAddComponentVisible" class="add-overlay">
+        <app-add (closeForm)="toggleAddComponent()"></app-add>
+    </div>
+  
+    <div *ngIf="isEditComponentVisible" class="edit-overlay">
+      <app-edit [booking]="selectedBook" (closeEdit)="closeEditComponent()"></app-edit>
+    </div>
+    
+  </div>
