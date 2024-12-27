@@ -3,7 +3,6 @@ import { BookService } from '../../book.service';
 import { CommonModule } from '@angular/common';
 import { AddComponent } from "../add/add.component";
 import { ToastrService } from 'ngx-toastr';
-import { NavbarComponent } from '../../navbar/navbar.component';
 import { EditComponent } from '../edit/edit.component';
 
 @Component({
