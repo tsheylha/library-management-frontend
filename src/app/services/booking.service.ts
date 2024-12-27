@@ -12,20 +12,25 @@ export class BookingService {
   constructor(private http: HttpClient) {}
 
   saveBook(booking: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/addbooking`, booking);
+    return this.http.post<any>(`${this.baseUrl}`, booking);
   }
   
   get(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl);
   }
+  // Get the count of bookings
   getCount(): Observable<number> {
-    return this.http.get<number>(`${this.baseUrl}/count`);
+    return this.http.get<number>(`${this.baseUrl}/count`); // GET to fetch the count of bookings
+  }
+// Delete a booking by its ID
+delete(bookId: number): Observable<any> {
+  return this.http.delete(`${this.baseUrl}/${bookId.toString()}`); // DELETE a booking
 }
-  delete(bookId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${bookId.toString()}`); 
-  }
 
-  updateBook(id: number, bookingDTO: any): Observable<any> {
-    return this.http.patch(`${this.baseUrl}/update/${id}`, bookingDTO);
-  }
+updateBooking(id: number, bookingDTO: any): Observable<any> {
+  const url = `${this.baseUrl}/update/${id}`;
+  console.log('Request URL:', url);  // Log URL to verify it's correct
+  return this.http.patch(url, bookingDTO);
+}
+
 }

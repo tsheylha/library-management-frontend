@@ -35,7 +35,7 @@ export class AddbookingComponent {
   bookingsDropdownVisible = false;
 
   constructor(private bookingService: BookingService, private router: Router, private toastr: ToastrService) {}
-    saveBook(form: NgForm) {
+    saveBooking(form: NgForm) {
       if (form.invalid) {
         Object.keys(form.controls).forEach((field) => {
           const control = form.controls[field];

@@ -3,34 +3,34 @@ import { EditComponent } from '../../books/edit/edit.component';
 import { CommonModule } from '@angular/common';
 import { BookingService } from '../../services/booking.service';
 import { ToastrService } from 'ngx-toastr';
+import { AddbookingComponent } from '../addbooking/addbooking.component';
+import { EditbookingComponent } from '../editbooking/editbooking.component';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule,EditComponent],
+  imports: [CommonModule,EditComponent,AddbookingComponent,EditbookingComponent],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
 })
 export class BookingComponent implements OnInit{
-  booking: any[] = [];  
-   name: string = 'John Doe';  
+  booking: any[] = [];   
    dropdownVisible: boolean = false;
-   isAddComponentVisible = false; 
-   isEditComponentVisible = false;
-   selectedBook: any = null;
+   isAddbookingComponentVisible = false; 
+   isEditbookingComponentVisible = false;
+   selectedBooking: any = null;
  
    constructor(private bookingService: BookingService,  private toastr: ToastrService) {}
  
    ngOnInit(): void {
-     this.loadBookings();
+     this.updateBooking();
    }
 
-  loadBookings(): void {
+   updateBooking(): void {
     this.bookingService.get().subscribe({
       next: (response: any) => {  
-        console.log('Response:', response); 
-        if (response && response.data && response.data.book && Array.isArray(response.data.book)) {
-          this.booking = response.data.book;
+        if (response && response.data && Array.isArray(response.data.bookingInfo)) {
+          this.booking = response.data.bookingInfo; 
         } else {
           alert('No records.');
         }
@@ -60,17 +60,17 @@ export class BookingComponent implements OnInit{
     });
   }
   
-  toggleAddComponent() {
-    this.isAddComponentVisible = !this.isAddComponentVisible;
+  toggleAddbookingComponent() {
+    this.isAddbookingComponentVisible = !this.isAddbookingComponentVisible;
   }
 
-  onEditBook(book: any) {
-    this.selectedBook = book;
-    this.isEditComponentVisible = true;
+  onEditBooking(booking: any) {
+    this.selectedBooking = booking;
+    this.isEditbookingComponentVisible = true;
   }
 
-  closeEditComponent() {
-    this.isEditComponentVisible = false;
-    this.selectedBook = null;
+  closeEditbookingComponent() {
+    this.isEditbookingComponentVisible = false;
+    this.selectedBooking = null;
   }
-}
+} 
