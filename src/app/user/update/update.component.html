@@ -1,17 +1,24 @@
-<div class="update-user-form">
-    <h2>Update User</h2>   
+<div class= "edit-container">
+    <h2>Update Student</h2>   
     <form (ngSubmit)="post()">
       <label for="name">Name</label>
-      <input id="name" [(ngModel)]="user.name" name="name" required />
+      <input id="name" [(ngModel)]="student.name" name="name" required />
+
+      <label for="grade">Grade</label>
+      <input id="grade" [(ngModel)]="student.grade" name="grade" required />
   
       <label for="email">Email</label>
-      <input id="email" [(ngModel)]="user.email" name="email" required />
+      <input id="email" [(ngModel)]="student.email" name="email" required />
+
+      <label for="address">Address</label>
+      <input id="address" [(ngModel)]="student.address" name="address" required />
   
       <label for="phoneNumber">Phone Number</label>
-      <input id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber" required />
+      <input id="phoneNumber" [(ngModel)]="student.phoneNumber" name="phoneNumber" required />
   
-      <label for="course">Course</label>
-      <input id="course" [(ngModel)]="user.course" name="course" required />
+      <label for="faculty">Faculty</label>
+      <input id="faculty" [(ngModel)]="student.faculty" name="faculty" required />
+    
  
       <button type="submit">Save Changes</button>
       <button type="button" (click)="cancelUpdate()">Cancel</button>

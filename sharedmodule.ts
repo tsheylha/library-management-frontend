@@ -6,7 +6,7 @@ import { LineChartComponent } from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [
-    CommonModule, // Import CommonModule if needed
+    CommonModule, 
     NgxChartsModule, 
   ],
   exports: [

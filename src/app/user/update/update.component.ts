@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../api.service';
 import { ToastrService } from 'ngx-toastr';
+import { StudentService } from '../../student.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-update',
@@ -12,36 +13,37 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './update.component.css'
 })
 export class UpdateComponent {
-@Input() user: any;
+@Input() student: any;
 @Output() closeEdit = new EventEmitter<void>();
   
-  constructor(private apiService: ApiService, private toastr: ToastrService) {}
+  constructor(private studentService: StudentService, private toastr: ToastrService) {}
 
   post(): void {
-    const userDTO = {
-      name: this.user.name,
-      email: this.user.email,
-      phoneNumber: this.user.phoneNumber,
-      course: this.user.course,
+    const studentDTO = {
+      name: this.student.name,
+      grade: this.student.grade,
+      email: this.student.email,
+      address: this.student.address,
+      phoneNumber: this.student.phoneNumber,
+      faculty: this.student.faculty,
     };
   
-    // Correctly format the endpoint with the user ID
-    const endpoint = `/users/${this.user.id}`;
-  
-    // Call the API service's put method
-    this.apiService.patch(endpoint, userDTO).subscribe(
+    this.studentService.updateStudent(this.student.id, studentDTO).subscribe(
       (response) => {
-        console.log('User updated successfully:', response);
-        this.toastr.success('User updated successfully!', 'Success');
+        this.toastr.success('Student updated successfully!', 'Success');
         this.closeEdit.emit();
       },
-      (error) => {
-        console.error('Error updating user:', error);
-        this.toastr.error('Failed to update the user.', 'Error');
+      (error: HttpErrorResponse) => {
+        if (error.status === 404) {
+          this.toastr.error('Student not found.', 'Error');
+        } else if (error.status === 400) {
+          this.toastr.error('Invalid data provided.', 'Error');
+        } else {
+          this.toastr.error('An unexpected error occurred.', 'Error');
+        }
       }
     );
-  }
-  
+  }    
   cancelUpdate() {
     this.closeEdit.emit();
   }
