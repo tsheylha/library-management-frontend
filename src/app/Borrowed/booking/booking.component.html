@@ -1,0 +1,61 @@
+<div class="grid grid-cols-1 gap-6">
+  <!-- Users List -->
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="font-semibold text-2xl text-gray-800">Book Borrowed List</h2>
+      <button 
+      (click)="toggleAddbookingComponent()" 
+      class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-200 shadow">
+      + Book Issued
+    </button>
+    </div>  
+    <div class="overflow-x-auto">
+      <table *ngIf="booking.length > 0" class="w-full text-left text-gray-600 border-collapse">
+          <thead class="bg-gray-100 text-gray-700">
+            <tr>
+              <th class="py-3 px-4 border-b-2">Book ID</th>
+                <th class="py-3 px-4 border-b-2">User ID</th>
+                <th class="py-3 px-4 border-b-2">Borrowed Date</th>
+                <th class="py-3 px-4 border-b-2">Due Date</th>
+                <th class="py-3 px-4 border-b-2">Overdue (Days)</th>
+                <th class="py-3 px-4 border-b-2">Fine Amount</th>
+                <th class="py-3 px-4 border-b-2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr 
+            *ngFor="let booking of booking;let i = index" 
+              class="border-t hover:bg-gray-50 transition duration-150">
+              <td class="py-3 px-4">{{ booking.bookId }}</td>
+              <td class="py-3 px-4">{{ booking.userId }}</td>
+              <td class="py-3 px-4">{{ booking.borrowedDate | date: 'dd-MM-yyyy' }}</td>
+              <td class="py-3 px-4">{{ booking.dueDate | date: 'dd-MM-yyyy' }}</td>
+              <td class="py-3 px-4">{{ booking.overDue }}</td>
+              <td class="py-3 px-4">{{ booking.fineAmount }}</td>
+              <td>
+                <button 
+                (click)="onEditBooking(booking)"
+                  class="bg-orange-300 text-white px-3 py-1 rounded hover:bg-orange-600 transition duration-150">
+                  <i class="fa fa-edit"></i>
+                </button>                    
+                 <button 
+                (click)="deleteBooking(booking.id)"
+                 class="bg-red-300 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-150">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> 
+
+    <div *ngIf="isAddbookingComponentVisible" class="add-overlay">
+        <app-addbooking (closeForm)="toggleAddbookingComponent()"></app-addbooking>
+    </div>
+  
+    <div *ngIf="isEditbookingComponentVisible" class="edit-overlay">
+      <app-editbooking [booking]="selectedBooking" (closeEdit)="closeEditbookingComponent()"></app-editbooking>
+    </div>  
+</div>
+

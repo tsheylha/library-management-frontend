@@ -1,0 +1,121 @@
+/* Overall container to center everything */
+.edit-container {
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto; /* Centers horizontally */
+    font-family: 'Arial', sans-serif;
+    position: absolute; /* For vertical centering */
+    top: 50%; /* Positions it in the middle vertically */
+    left: 50%; /* Positions it in the middle horizontally */
+    transform: translate(-50%, -50%); /* Adjusts for exact centering */
+}
+
+/* Form styling */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555555; /* Neutral gray text */
+}
+
+/* Input field styling */
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+/* Input focus state */
+input:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Submit button */
+button[type="submit"] {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Cancel button */
+button[type="button"] {
+    background-color: #6c757d; /* Bootstrap secondary color */
+    color: white;
+}
+
+button[type="button"]:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+/* Button hover and active states */
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Error message styling */
+div[style*="color: red;"] {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Full width for buttons */
+div[style*="grid-column"] {
+    grid-column: span 2; /* Full row for buttons */
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Heading styling */
+h3 {
+    font-size: 18px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    div[style*="grid-column"] {
+        justify-content: space-between;
+    }
+}

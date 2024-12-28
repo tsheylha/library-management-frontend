@@ -8,6 +8,7 @@ import { UserlistComponent } from './user/userlist/userlist.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { BookingComponent } from './Borrowed/booking/booking.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, 
@@ -22,6 +23,7 @@ export const routes: Routes = [
       { path: 'dashboard/main', component: MainComponent },
       { path: 'books/view', component: ViewComponent },
       { path: 'user/userlist', component: UserlistComponent },
+      { path: 'Borrowed/booking', component: BookingComponent },
     ],
   },
 ];
